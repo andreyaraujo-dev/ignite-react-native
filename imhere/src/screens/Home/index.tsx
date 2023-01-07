@@ -1,4 +1,5 @@
 import {
+  Alert,
   FlatList,
   ScrollView,
   Text,
@@ -22,10 +23,26 @@ export function Home() {
     "Vidal",
     "Vinicios Junior",
   ];
-  function handleParticipantAdd() {}
+  function handleParticipantAdd() {
+    if (participants.includes("CR7")) {
+      return Alert.alert(
+        "Participante existe",
+        "Já existe um participante na lista com esse nome."
+      );
+    }
+  }
 
   function handleParticipantRemove(name: string) {
-    console.log(`remove participant ${name}`);
+    Alert.alert("Remover", `Remover participante ${name}?`, [
+      {
+        text: "Sim",
+        onPress: () => Alert.alert("Deletado!"),
+      },
+      {
+        text: "Não",
+        style: "cancel",
+      },
+    ]);
   }
   return (
     <View style={styles.container}>
